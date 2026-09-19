@@ -43,7 +43,7 @@ export default function EndingSection() {
               className="absolute left-1/2 top-1/2 h-44 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(169,199,232,0.13),transparent)] blur-xl"
             />
             <p className="relative flex items-center justify-center gap-3 text-center font-serif text-[2rem] font-medium leading-[1.3] text-snow sm:text-[2.3rem]">
-              I like you
+              Jyoti, I like you
               <HeartDoodle filled className="mt-2 h-5 w-5 text-powder" />
             </p>
           </div>

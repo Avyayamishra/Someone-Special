@@ -63,7 +63,7 @@ export default function BeautySection() {
 
           <Reveal delay={0.05}>
             <PullLine className="mb-5">
-              To me, you&apos;re like a window with sunlight falling through it —
+              To me, you&apos;re like a window with moonlight falling through it —
             </PullLine>
             <Para className="mt-0">
               not trying to be the centre of the room, but somehow making
@@ -91,9 +91,19 @@ export default function BeautySection() {
             </Para>
           </Reveal>
 
-          <MarginNote className="rotate-[1.5deg] text-right">
-            i hope you remember this
-          </MarginNote>
+          <Reveal delay={0.1}>
+            <MarginNote className="mt-6 rotate-[1.5deg] text-right">
+              i hope you remember this, Jyoti
+            </MarginNote>
+          </Reveal>
+
+          <Reveal delay={0.18}>
+            <MarginNote className="mt-1.5 rotate-[1.5deg] text-right text-[1.08rem] text-powder/70">
+              …and your name means light, you know.
+              <br />
+              i think whoever named you got it exactly right.
+            </MarginNote>
+          </Reveal>
         </div>
       </div>
     </section>

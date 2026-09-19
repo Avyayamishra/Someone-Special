@@ -86,7 +86,7 @@ export default function BeginningSection() {
         </Reveal>
 
         <MarginNote className="rotate-[-1.5deg] text-right">
-          the beginning is kind of exciting, isn&apos;t it?
+          the beginning is kind of exciting, isn&apos;t it, Jyoti?
         </MarginNote>
       </div>
     </section>

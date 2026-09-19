@@ -27,7 +27,7 @@ const heartIcon = encodeURIComponent(
 );
 
 export const metadata: Metadata = {
-  title: "a little something for you ♡",
+  title: "a little something for Jyoti ♡",
   description:
     "a small, soft corner of the internet — a few feelings, written down just for you.",
   icons: { icon: `data:image/svg+xml,${heartIcon}` },

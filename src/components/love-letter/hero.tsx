@@ -192,7 +192,7 @@ export default function Hero({ onOpen }: { onOpen: () => void }) {
           variants={item}
           className="-rotate-3 font-hand text-[1.6rem] text-powder/95"
         >
-          for you ♡
+          for Jyoti ♡
         </motion.p>
 
         <motion.div variants={item} className="relative mt-5">

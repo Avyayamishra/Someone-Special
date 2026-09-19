@@ -57,7 +57,7 @@ export default function Letter() {
       <footer className="mt-auto px-6 pb-8 pt-4 text-center">
         <Dots className="mx-auto mb-3 h-2.5 w-8 text-moon/50" />
         <p className="font-hand text-[1.2rem] text-frost/75">
-          made just for you, with a lot of thought ♡
+          made just for you, Jyoti — with a lot of thought ♡
         </p>
         <Sparkle className="mx-auto mt-3 h-2 w-2 text-powder/40" />
       </footer>
