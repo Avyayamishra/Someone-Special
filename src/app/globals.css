@@ -1,0 +1,283 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/*  A Little Something For You — design tokens                          */
+/*  a love letter written at midnight, in blue ink                     */
+/* ------------------------------------------------------------------ */
+
+@theme inline {
+  /* typography */
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-hand: var(--font-caveat), "Bradley Hand", cursive;
+
+  /* base tokens for the component library */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@theme {
+  /* the midnight palette — black, and every shade of blue she loves */
+  --color-ink: #08090d; /* page background — deep black           */
+  --color-night: #0c111c; /* near-black panels                     */
+  --color-midnight: #101a33; /* the letter paper — midnight blue      */
+  --color-navy: #16244a; /* cards layered on the letter           */
+  --color-azure: #3b82f6; /* a brighter blue — tiny accents only   */
+  --color-moon: #6096c8; /* muted moonlit blue — accents          */
+  --color-powder: #a9c7e8; /* powder blue — soft highlights         */
+  --color-pale: #e8f2ff; /* very pale blue — emphasis             */
+  --color-snow: #f8fafc; /* primary text — white                  */
+  --color-frost: #c4d2e6; /* muted text — muted white-blue         */
+  --color-silver: #2b3a57; /* subtle silver-blue borders            */
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #08090d;
+  --foreground: #f8fafc;
+  --card: #101a33;
+  --card-foreground: #f8fafc;
+  --popover: #0c111c;
+  --popover-foreground: #f8fafc;
+  --primary: #a9c7e8;
+  --primary-foreground: #0a0f1e;
+  --secondary: #16244a;
+  --secondary-foreground: #f8fafc;
+  --muted: #0f1930;
+  --muted-foreground: #c4d2e6;
+  --accent: #6096c8;
+  --accent-foreground: #f8fafc;
+  --destructive: #6096c8;
+  --border: #2b3a57;
+  --input: #2b3a57;
+  --ring: #6096c8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-ink font-sans text-[15px] leading-[1.9] text-frost;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(96, 150, 200, 0.42);
+    color: #f8fafc;
+  }
+
+  /* quiet, moonlit focus ring */
+  :focus-visible {
+    outline: 2px solid rgba(96, 150, 200, 0.6);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+
+  /* delicate scrollbar, silver on black */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08090d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #263450;
+    border-radius: 999px;
+    border: 3px solid #08090d;
+  }
+  html {
+    scrollbar-color: #263450 #08090d;
+    scrollbar-width: thin;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Paper grain — a whisper of texture on the dark pages                */
+/* ------------------------------------------------------------------ */
+
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------ */
+/*  Ambient motion — stars, motes, light                                */
+/* ------------------------------------------------------------------ */
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+.twinkle {
+  animation: twinkle var(--dur, 4s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes mote-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(7px, -9px);
+  }
+  50% {
+    transform: translate(-5px, -16px);
+  }
+  75% {
+    transform: translate(5px, -7px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.mote {
+  animation: mote-drift var(--dur, 11s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-130%) skewX(-14deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-14deg);
+  }
+}
+
+.sweep {
+  animation: sweep var(--dur, 9s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.055);
+  }
+}
+
+.pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+@keyframes note-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.note-bob {
+  animation: note-bob 3.2s ease-in-out infinite;
+}
+
+/* the diya — the one warm light in the whole letter */
+@keyframes diya-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.07);
+  }
+}
+
+.diya-glow {
+  animation: diya-glow var(--dur, 4.4s) ease-in-out infinite;
+}
+
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+  28% {
+    transform: scaleY(1.06) scaleX(0.97);
+  }
+  55% {
+    transform: scaleY(0.96) scaleX(1.03);
+  }
+  80% {
+    transform: scaleY(1.04) scaleX(0.99);
+  }
+}
+
+.flame-flicker {
+  animation: flame-flicker var(--dur, 3.6s) ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion — everything goes still and calm                     */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .twinkle,
+  .note-bob,
+  .mote,
+  .sweep,
+  .pulse-soft,
+  .diya-glow,
+  .flame-flicker {
+    animation: none !important;
+  }
+}
